@@ -31,7 +31,7 @@
  * Basic settings can be found in Configuration.h
  *
  */
-#define CONFIGURATION_ADV_H_VERSION 020000
+#define CONFIGURATION_ADV_H_VERSION 020001
 
 // @section temperature
 
@@ -74,12 +74,12 @@
  * THERMAL_PROTECTION_HYSTERESIS and/or THERMAL_PROTECTION_PERIOD
  */
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
-  #define THERMAL_PROTECTION_PERIOD 40        // Seconds
-  #define THERMAL_PROTECTION_HYSTERESIS 4     // Degrees Celsius
+  #define THERMAL_PROTECTION_PERIOD 90        // Seconds
+  #define THERMAL_PROTECTION_HYSTERESIS 15     // Degrees Celsius
 
-  //#define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
+  #define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
   #if ENABLED(ADAPTIVE_FAN_SLOWING) && ENABLED(PIDTEMP)
-    //#define NO_FAN_SLOWING_IN_PID_TUNING    // Don't slow fan speed during M303
+    #define NO_FAN_SLOWING_IN_PID_TUNING    // Don't slow fan speed during M303
   #endif
 
   /**
@@ -94,7 +94,7 @@
    * and/or decrease WATCH_TEMP_INCREASE. WATCH_TEMP_INCREASE should not be set
    * below 2.
    */
-  #define WATCH_TEMP_PERIOD 20                // Seconds
+  #define WATCH_TEMP_PERIOD 60                // Seconds
   #define WATCH_TEMP_INCREASE 2               // Degrees Celsius
 #endif
 
@@ -102,7 +102,7 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-  #define THERMAL_PROTECTION_BED_PERIOD 20    // Seconds
+  #define THERMAL_PROTECTION_BED_PERIOD 90    // Seconds
   #define THERMAL_PROTECTION_BED_HYSTERESIS 2 // Degrees Celsius
 
   /**
@@ -176,7 +176,7 @@
 
 // The number of consecutive low temperature errors that can occur
 // before a min_temp_error is triggered. (Shouldn't be more than 10.)
-//#define MAX_CONSECUTIVE_LOW_TEMPERATURE_ERROR_ALLOWED 0
+#define MAX_CONSECUTIVE_LOW_TEMPERATURE_ERROR_ALLOWED 3
 
 // The number of milliseconds a hotend will preheat before starting to check
 // the temperature. This value should NOT be set to the time it takes the
@@ -691,8 +691,8 @@
 // Change values more rapidly when the encoder is rotated faster
 #define ENCODER_RATE_MULTIPLIER
 #if ENABLED(ENCODER_RATE_MULTIPLIER)
-  #define ENCODER_10X_STEPS_PER_SEC   30  // (steps/s) Encoder rate for 10x speed
-  #define ENCODER_100X_STEPS_PER_SEC  80  // (steps/s) Encoder rate for 100x speed
+  #define ENCODER_10X_STEPS_PER_SEC   75  // (steps/s) Encoder rate for 10x speed
+  #define ENCODER_100X_STEPS_PER_SEC  160  // (steps/s) Encoder rate for 100x speed
 #endif
 
 // Play a beep when the feedrate is changed from the Status Screen
@@ -712,7 +712,7 @@
 //#define LCD_DECIMAL_SMALL_XY
 
 // The timeout (in ms) to return to the status screen from sub-menus
-//#define LCD_TIMEOUT_TO_STATUS 15000
+#define LCD_TIMEOUT_TO_STATUS 60000
 
 // Add an 'M73' G-code to set the current percentage
 //#define LCD_SET_PROGRESS_MANUALLY
@@ -975,7 +975,7 @@
  *
  * Warning: Does not respect endstops!
  */
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   //#define BABYSTEP_WITHOUT_HOMING
   //#define BABYSTEP_XY                     // Also enable X/Y Babystepping. Not supported on DELTA!
@@ -1018,9 +1018,9 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-//#define LIN_ADVANCE
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
-  #define LIN_ADVANCE_K 0.22  // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0.09  // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG          // If enabled, this will generate debug information output over USB.
 #endif
 
@@ -1278,7 +1278,7 @@
  * Requires NOZZLE_PARK_FEATURE.
  * This feature is required for the default FILAMENT_RUNOUT_SCRIPT.
  */
-//#define ADVANCED_PAUSE_FEATURE
+#define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
   #define PAUSE_PARK_RETRACT_FEEDRATE         60  // (mm/s) Initial retract feedrate.
   #define PAUSE_PARK_RETRACT_LENGTH            2  // (mm) Initial retract.
@@ -1687,7 +1687,7 @@
   //#define L6470_CHITCHAT        // Display additional status info
 
   #if AXIS_DRIVER_TYPE_X(L6470)
-    #define X_MICROSTEPS     128  // Number of microsteps (VALID: 1, 2, 4, 8, 16, 32, 128)
+    #define X_MICROSTEPS      16  // Number of microsteps (VALID: 1, 2, 4, 8, 16, 32, 128)
     #define X_OVERCURRENT   2000  // (mA) Current where the driver detects an over current (VALID: 375 x (1 - 16) - 6A max - rounds down)
     #define X_STALLCURRENT  1500  // (mA) Current where the driver detects a stall (VALID: 31.25 * (1-128) -  4A max - rounds down)
     #define X_MAX_VOLTAGE    127  // 0-255, Maximum effective voltage seen by stepper
@@ -1695,7 +1695,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_X2(L6470)
-    #define X2_MICROSTEPS      128
+    #define X2_MICROSTEPS       16
     #define X2_OVERCURRENT    2000
     #define X2_STALLCURRENT   1500
     #define X2_MAX_VOLTAGE     127
@@ -1703,7 +1703,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_Y(L6470)
-    #define Y_MICROSTEPS       128
+    #define Y_MICROSTEPS        16
     #define Y_OVERCURRENT     2000
     #define Y_STALLCURRENT    1500
     #define Y_MAX_VOLTAGE      127
@@ -1711,7 +1711,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_Y2(L6470)
-    #define Y2_MICROSTEPS      128
+    #define Y2_MICROSTEPS       16
     #define Y2_OVERCURRENT    2000
     #define Y2_STALLCURRENT   1500
     #define Y2_MAX_VOLTAGE     127
@@ -1719,7 +1719,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_Z(L6470)
-    #define Z_MICROSTEPS       128
+    #define Z_MICROSTEPS        16
     #define Z_OVERCURRENT     2000
     #define Z_STALLCURRENT    1500
     #define Z_MAX_VOLTAGE      127
@@ -1727,7 +1727,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_Z2(L6470)
-    #define Z2_MICROSTEPS      128
+    #define Z2_MICROSTEPS       16
     #define Z2_OVERCURRENT    2000
     #define Z2_STALLCURRENT   1500
     #define Z2_MAX_VOLTAGE     127
@@ -1735,7 +1735,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_Z3(L6470)
-    #define Z3_MICROSTEPS      128
+    #define Z3_MICROSTEPS       16
     #define Z3_OVERCURRENT    2000
     #define Z3_STALLCURRENT   1500
     #define Z3_MAX_VOLTAGE     127
@@ -1743,7 +1743,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_E0(L6470)
-    #define E0_MICROSTEPS      128
+    #define E0_MICROSTEPS       16
     #define E0_OVERCURRENT    2000
     #define E0_STALLCURRENT   1500
     #define E0_MAX_VOLTAGE     127
@@ -1751,7 +1751,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_E1(L6470)
-    #define E1_MICROSTEPS      128
+    #define E1_MICROSTEPS       16
     #define E1_OVERCURRENT    2000
     #define E1_STALLCURRENT   1500
     #define E1_MAX_VOLTAGE     127
@@ -1759,7 +1759,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_E2(L6470)
-    #define E2_MICROSTEPS      128
+    #define E2_MICROSTEPS       16
     #define E2_OVERCURRENT    2000
     #define E2_STALLCURRENT   1500
     #define E2_MAX_VOLTAGE     127
@@ -1767,7 +1767,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_E3(L6470)
-    #define E3_MICROSTEPS      128
+    #define E3_MICROSTEPS       16
     #define E3_OVERCURRENT    2000
     #define E3_STALLCURRENT   1500
     #define E3_MAX_VOLTAGE     127
@@ -1775,7 +1775,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_E4(L6470)
-    #define E4_MICROSTEPS      128
+    #define E4_MICROSTEPS       16
     #define E4_OVERCURRENT    2000
     #define E4_STALLCURRENT   1500
     #define E4_MAX_VOLTAGE     127
@@ -1783,7 +1783,7 @@
   #endif
 
   #if AXIS_DRIVER_TYPE_E5(L6470)
-    #define E5_MICROSTEPS      128
+    #define E5_MICROSTEPS       16
     #define E5_OVERCURRENT    2000
     #define E5_STALLCURRENT   1500
     #define E5_MAX_VOLTAGE     127
