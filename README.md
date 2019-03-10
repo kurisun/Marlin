@@ -4,6 +4,12 @@
 Configuration files have been modified for the Maker Select V2.1 with an All metal Hotend.
 Modifications made to configuration.h and configuration_adv.h
 
+This build is very tight on memory, I have modified the settings to not load the SD card libraries in order to save space.  I print to this printer using Octoprint so the SD card is not needed.  I have some new features enabled from the 2.0 branch that I am still playing with as well.
+
+This can be built and uploaded to the Maker Select V2.1 over USB using Sanguino and the ATMega1284 16mhz board settings in ArduinoISP.  This requires a bootloader to be burned to the board and more information can be found through searching on how to do this.
+
+Please try this at your own risk as I had to tune the settings and thermal protections to what best suits my heavily customized printer.
+
 # Marlin 3D Printer Firmware
 
 [![Build Status](https://travis-ci.org/MarlinFirmware/Marlin.svg?branch=RCBugFix)](https://travis-ci.org/MarlinFirmware/Marlin)
