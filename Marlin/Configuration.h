@@ -137,11 +137,11 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-#define CUSTOM_MACHINE_NAME "Cyborg"
+// #define CUSTOM_MACHINE_NAME ""
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
-#define MACHINE_UUID "a6ea9026-07cb-46cb-9028-dd558caa91d6"
+// #define MACHINE_UUID ""
 
 // @section extruder
 
