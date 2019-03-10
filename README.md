@@ -1,3 +1,9 @@
+# Marlin 3D Printer Firmware for Monoprice Maker Select V2.1 (Wanhao Duplicator i3)
+**Please use the 2.0.x  Bugfix branch as that is the only being modified in this fork.**
+## Changes in this Marlin fork
+Configuration files have been modified for the Maker Select V2.1 with an All metal Hotend.
+Modifications made to configuration.h and configuration_adv.h
+
 # Marlin 3D Printer Firmware
 
 [![Build Status](https://travis-ci.org/MarlinFirmware/Marlin.svg?branch=RCBugFix)](https://travis-ci.org/MarlinFirmware/Marlin)
