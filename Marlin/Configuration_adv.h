@@ -74,8 +74,8 @@
  * THERMAL_PROTECTION_HYSTERESIS and/or THERMAL_PROTECTION_PERIOD
  */
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
-  #define THERMAL_PROTECTION_PERIOD 90        // Seconds
-  #define THERMAL_PROTECTION_HYSTERESIS 15     // Degrees Celsius
+  #define THERMAL_PROTECTION_PERIOD 40        // Seconds - I am testing 90 but you need to find your sweet spot
+  #define THERMAL_PROTECTION_HYSTERESIS 4     // Degrees Celsius - again I use 15 for testing, but default is 4
 
   #define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
   #if ENABLED(ADAPTIVE_FAN_SLOWING) && ENABLED(PIDTEMP)
@@ -94,7 +94,7 @@
    * and/or decrease WATCH_TEMP_INCREASE. WATCH_TEMP_INCREASE should not be set
    * below 2.
    */
-  #define WATCH_TEMP_PERIOD 60                // Seconds
+  #define WATCH_TEMP_PERIOD 20                // Seconds - I use 60 for testing, default is 20
   #define WATCH_TEMP_INCREASE 2               // Degrees Celsius
 #endif
 
@@ -102,7 +102,7 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-  #define THERMAL_PROTECTION_BED_PERIOD 90    // Seconds
+  #define THERMAL_PROTECTION_BED_PERIOD 20    // Seconds - I use 90 for testing, 20 is default
   #define THERMAL_PROTECTION_BED_HYSTERESIS 2 // Degrees Celsius
 
   /**
@@ -176,7 +176,7 @@
 
 // The number of consecutive low temperature errors that can occur
 // before a min_temp_error is triggered. (Shouldn't be more than 10.)
-#define MAX_CONSECUTIVE_LOW_TEMPERATURE_ERROR_ALLOWED 3
+//#define MAX_CONSECUTIVE_LOW_TEMPERATURE_ERROR_ALLOWED 0 // Default is 0 and disabled, I use 3 for testing
 
 // The number of milliseconds a hotend will preheat before starting to check
 // the temperature. This value should NOT be set to the time it takes the
